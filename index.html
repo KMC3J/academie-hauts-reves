@@ -1,355 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>L’Académie des Hauts Rêves ✨</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L’Académie des Hauts Rêves</title>
 <style>
-:root {
-  --night:#10132f;
-  --purple:#27234e;
-  --gold:#f8d98b;
-  --cream:#fff8e8;
-  --muted:#c9c6e7;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  font-family:Georgia,"Trebuchet MS",sans-serif;
-  color:var(--cream);
-  background:
-    radial-gradient(ellipse at 50% 0%,#4a397c 0%,transparent 48%),
-    linear-gradient(160deg,#11142e,#211b48 60%,#10132f);
-  min-height:100vh;
-}
-button,input,textarea { font:inherit; }
-button { cursor:pointer; }
-header {
-  display:flex;align-items:center;justify-content:space-between;
-  gap:16px;padding:18px clamp(16px,4vw,55px);
-  border-bottom:1px solid #ffffff20;
-  background:#10132f70;backdrop-filter:blur(12px);
-  position:sticky;top:0;z-index:5;
-}
-.brand { display:flex;gap:12px;align-items:center; }
-.brand-icon { font-size:36px;filter:drop-shadow(0 0 12px #f8d98b80); }
-.brand h1 { font-size:clamp(16px,2.4vw,25px);margin:0;color:var(--gold); }
-.brand small { color:var(--muted);display:block;margin-top:4px; }
-.score {
-  border:1px solid #f8d98b70;border-radius:30px;padding:10px 16px;
-  color:var(--gold);white-space:nowrap;background:#ffffff09;
-}
-main { max-width:1200px;margin:auto;padding:25px clamp(15px,4vw,45px) 55px; }
-.hero {
-  position:relative;overflow:hidden;text-align:center;
-  border:1px solid #f8d98b55;border-radius:28px;
-  padding:35px 18px 30px;
-  background:linear-gradient(135deg,#29234fdd,#161831ee);
-  box-shadow:0 20px 60px #0003;
-}
-.hero:before,.hero:after {
-  content:"✦";position:absolute;color:var(--gold);font-size:24px;
-  animation:twinkle 2.8s infinite alternate;
-}
-.hero:before { top:20px;left:8%; }
-.hero:after { bottom:25px;right:9%;animation-delay:1s; }
-@keyframes twinkle { from{opacity:.25;transform:scale(.8)}to{opacity:1;transform:scale(1.2)} }
-.eyebrow { text-transform:uppercase;letter-spacing:3px;font-size:11px;color:var(--gold); }
-.hero h2 { font-size:clamp(27px,5vw,48px);margin:12px 0;color:#fff3cf; }
-.hero p { max-width:640px;margin:0 auto;color:var(--muted);line-height:1.7; }
-.castle { font-size:clamp(75px,14vw,130px);line-height:1.3;filter:drop-shadow(0 0 25px #f8d98b40); }
-.hero-actions { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px; }
-.btn {
-  border:1px solid #f8d98b70;background:#f8d98b;color:#241c3c;
-  border-radius:30px;padding:12px 19px;font-weight:bold;
-  transition:transform .2s,box-shadow .2s;
-}
-.btn:hover { transform:translateY(-2px);box-shadow:0 8px 25px #f8d98b30; }
-.btn.secondary { background:#ffffff0b;color:var(--cream); }
-.section-heading { display:flex;align-items:end;justify-content:space-between;gap:12px;margin:32px 0 15px; }
-.section-heading h2 { margin:0;font-size:23px;color:var(--gold); }
-.section-heading p { margin:5px 0 0;color:var(--muted);font-size:13px; }
-.grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px; }
-.portal {
-  text-align:left;position:relative;overflow:hidden;
-  min-height:165px;padding:19px;border-radius:20px;
-  border:1px solid #ffffff24;color:var(--cream);
-  background:linear-gradient(145deg,#ffffff12,#ffffff04);
-  transition:transform .2s,border-color .2s,background .2s;
-}
-.portal:hover { transform:translateY(-5px);border-color:var(--gold);background:#ffffff13; }
-.portal .emoji { font-size:37px;display:block;margin-bottom:12px; }
-.portal h3 { margin:0 0 7px;font-size:18px; }
-.portal p { margin:0;color:var(--muted);font-size:12px;line-height:1.5; }
-.portal .enter { display:block;margin-top:13px;color:var(--gold);font-size:12px; }
-.panel-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:15px;margin-top:16px; }
-.panel {
-  border:1px solid #ffffff20;border-radius:20px;padding:22px;
-  background:#ffffff08;
-}
-.panel h3 { margin:0 0 13px;color:var(--gold); }
-.panel p { color:var(--muted);line-height:1.6; }
-.progress-track { height:10px;border-radius:20px;background:#ffffff15;overflow:hidden;margin:13px 0; }
-.progress-fill { height:100%;width:0;background:linear-gradient(90deg,#c6a4ff,#f8d98b);transition:width .4s; }
-.badges { display:flex;gap:10px;flex-wrap:wrap; }
-.badge { padding:10px 12px;border-radius:14px;background:#ffffff09;border:1px solid #ffffff17;font-size:13px; }
-.badge.locked { opacity:.4;filter:grayscale(1); }
-footer { text-align:center;color:#aaa6cb;font-size:12px;padding:20px; }
-.modal {
-  display:none;position:fixed;inset:0;background:#09091bdc;z-index:20;
-  padding:18px;overflow:auto;align-items:center;justify-content:center;
-}
-.modal.open { display:flex; }
-.dialog {
-  width:min(650px,100%);max-height:90vh;overflow:auto;
-  border:1px solid #f8d98b80;border-radius:24px;padding:25px;
-  background:linear-gradient(145deg,#302955,#171832);
-  box-shadow:0 25px 80px #0008;
-}
-.dialog h2 { color:var(--gold);margin-top:0; }
-.question { padding:16px 0;border-bottom:1px solid #ffffff19; }
-.question p { margin-top:0;line-height:1.5; }
-.answers { display:grid;grid-template-columns:1fr 1fr;gap:9px; }
-.answer {
-  background:#ffffff0b;border:1px solid #ffffff30;border-radius:12px;
-  padding:12px;color:white;text-align:left;
-}
-.answer:hover { border-color:var(--gold); }
-.answer.correct { background:#2d694f; }
-.answer.wrong { background:#7b3547; }
-.result { margin:15px 0;color:var(--gold);line-height:1.6; }
-.field { display:block;width:100%;margin:10px 0 15px;padding:12px;border-radius:10px;border:1px solid #ffffff30;background:#11132e;color:white; }
-textarea.field { min-height:120px;resize:vertical; }
-.close { float:right;background:none;border:1px solid #ffffff50;color:white;border-radius:20px;padding:7px 12px; }
-@media(max-width:800px) {
-  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .panel-grid { grid-template-columns:1fr; }
-}
-@media(max-width:420px) {
-  header { padding:13px; }
-  .brand-icon { font-size:28px; }
-  .brand small { display:none; }
-  .score { font-size:12px;padding:8px; }
-  .portal { padding:14px;min-height:150px; }
-  .portal h3 { font-size:16px; }
-  .answers { grid-template-columns:1fr; }
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+:root{--ink:#f9f1ff;--muted:#d5c8ee;--gold:#ffdc8a;--violet:#241342;--panel:rgba(27,17,62,.76);--line:rgba(255,226,161,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Nunito,system-ui,sans-serif;min-height:100vh;background:#120b2d;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 0%,#59428d 0,#241747 42%,#100a26 100%)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(2px 2px at 15% 18%,#fff 50%,transparent 60%),radial-gradient(1px 1px at 72% 15%,#fff 50%,transparent 60%),radial-gradient(2px 2px at 88% 42%,#ffe7a5 50%,transparent 60%),radial-gradient(1px 1px at 36% 61%,#fff 50%,transparent 60%),radial-gradient(2px 2px at 63% 77%,#fff 50%,transparent 60%),radial-gradient(1px 1px at 9% 83%,#ffe7a5 50%,transparent 60%);background-size:320px 260px;opacity:.8}
+header{max-width:1180px;margin:auto;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px}.crest{width:52px;height:58px;display:grid;place-items:center;font-size:29px;background:linear-gradient(145deg,#f7df9d,#a66b35);clip-path:polygon(50% 0,95% 15%,88% 72%,50% 100%,12% 72%,5% 15%);filter:drop-shadow(0 0 15px #f6d27b66)}.brand h1{font:700 clamp(15px,2.2vw,23px) Cinzel,serif;margin:0;color:var(--gold);letter-spacing:.04em}.brand small{color:#d9c9f7;letter-spacing:.16em;text-transform:uppercase;font-size:10px}.top-stats{display:flex;gap:10px;align-items:center}.pill{border:1px solid var(--line);background:#ffffff0d;padding:9px 13px;border-radius:999px;font-weight:800;white-space:nowrap}
+main{max-width:1180px;margin:auto;padding:0 22px 48px}.hero{position:relative;text-align:center;padding:28px 18px 26px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:linear-gradient(120deg,#211341d9,#39245bd9 55%,#1a1238e8);box-shadow:0 25px 70px #05031366,inset 0 1px #ffffff20}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,#e0b45d24,transparent 55%);pointer-events:none}.moon{position:absolute;right:8%;top:12px;width:75px;height:75px;border-radius:50%;background:#fff0c9;box-shadow:0 0 35px #ffe9b3aa,0 0 100px #ffe9b344;opacity:.9}.moon:after{content:"";position:absolute;left:-13px;top:-5px;width:75px;height:75px;border-radius:50%;background:#30204f}
+.hero-content{position:relative}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:800}.hero h2{font:700 clamp(27px,5vw,49px) Cinzel,serif;margin:12px 0 8px;text-shadow:0 0 28px #f3c96e3d}.hero p{color:#e1d7f5;max-width:650px;margin:0 auto 18px;line-height:1.65}.hero-art{font-size:clamp(54px,9vw,92px);line-height:1.3;filter:drop-shadow(0 12px 20px #08051e);animation:float 5s ease-in-out infinite}.hero-art span{display:inline-block}.hero-art span:nth-child(2){font-size:.62em;transform:translateY(-22px)}.hero-art span:nth-child(3){font-size:.75em;transform:translateY(10px)}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+button{font:inherit;cursor:pointer;border:0;transition:transform .18s,filter .18s}button:hover{transform:translateY(-2px);filter:brightness(1.1)}button:focus-visible{outline:3px solid #fff;outline-offset:3px}.primary{padding:12px 20px;border-radius:999px;color:#2a1740;font-weight:900;background:linear-gradient(135deg,#fff0b8,#eab65d);box-shadow:0 7px 22px #e8b95733}.secondary{padding:10px 16px;border-radius:999px;color:var(--ink);font-weight:800;background:#ffffff10;border:1px solid var(--line)}
+.welcome{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin:18px 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 15px 38px #05031324}.card h3{font:600 18px Cinzel,serif;margin:0 0 8px;color:var(--gold)}.muted{color:var(--muted);font-size:14px;line-height:1.6}.profile-row{display:flex;gap:12px;align-items:center}.avatar{font-size:39px;background:#ffffff0d;border:1px solid var(--line);border-radius:16px;width:64px;height:64px;display:grid;place-items:center}.profile-name{font-size:18px;font-weight:900}.level{font-size:12px;color:#f5d98d;font-weight:800;margin-top:3px}.progress{height:8px;border-radius:20px;background:#ffffff16;overflow:hidden;margin-top:12px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#a98aff,#ffdc8a);border-radius:20px;transition:width .4s}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 2px 14px}.section-title h2{font:600 clamp(21px,3vw,28px) Cinzel,serif;margin:0}.section-title p{margin:5px 0 0;color:var(--muted);font-size:13px}.portals{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.portal{position:relative;min-height:176px;text-align:left;padding:17px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(145deg,#ffffff13,#ffffff05);color:var(--ink);overflow:hidden}.portal:after{content:"";position:absolute;width:110px;height:110px;right:-35px;bottom:-45px;border-radius:50%;background:var(--glow,#b19aff);filter:blur(45px);opacity:.25}.portal .icon{font-size:34px;display:block;margin-bottom:10px;filter:drop-shadow(0 5px 8px #0005)}.portal strong{font-size:16px;display:block}.portal small{display:block;color:#d2c5e9;line-height:1.45;margin-top:5px}.portal .tag{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:10px;font-weight:900}.portal.locked{opacity:.58;filter:grayscale(.4)}.portal.locked:before{content:"🔒";position:absolute;right:13px;top:13px;font-size:18px;z-index:1}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}.mission{display:flex;align-items:center;gap:14px}.mission-icon{font-size:30px;background:#ffffff0c;border-radius:15px;padding:12px}.mission strong{display:block}.mission p{margin:4px 0 0;font-size:13px;color:var(--muted)}.badge-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.badge{border:1px solid var(--line);background:#ffffff0c;padding:8px 10px;border-radius:12px;font-size:12px}.badge.off{opacity:.4;filter:grayscale(1)}footer{text-align:center;color:#a99bc8;font-size:12px;padding:25px 10px 0}
+.modal{position:fixed;inset:0;background:#08051bd9;backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px;z-index:5}.modal.open{display:flex}.dialog{width:min(650px,100%);max-height:90vh;overflow:auto;background:linear-gradient(145deg,#2a1a4b,#17102f);border:1px solid #f1d48a66;border-radius:24px;padding:24px;box-shadow:0 25px 100px #0009}.dialog-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.dialog h2{font:600 24px Cinzel,serif;color:var(--gold);margin:0}.close{font-size:22px;color:white;background:#ffffff12;border-radius:50%;width:38px;height:38px}.choices{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.choice{border:1px solid var(--line);border-radius:14px;padding:10px 13px;background:#ffffff0a;color:var(--ink)}.choice.selected{background:#e9c36d;color:#28163d;border-color:#fff0ba}.field{width:100%;background:#ffffff0d;border:1px solid var(--line);border-radius:12px;padding:12px;color:white;font:inherit;margin:7px 0 13px}.field::placeholder{color:#b6a8cf}.field option{color:#21153d}.question{font-size:18px;font-weight:900;margin:20px 0 12px}.answers{display:grid;gap:9px}.answer{padding:12px 14px;text-align:left;background:#ffffff0c;border:1px solid var(--line);color:white;border-radius:13px}.answer.correct{background:#1d674b;border-color:#7be0b3}.answer.wrong{background:#7a3048;border-color:#ff9db6}.feedback{min-height:25px;margin:12px 0;color:#ffe39b;font-weight:800}.dialog-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.notice{color:#ffe6a2;font-weight:800}.spark{position:fixed;pointer-events:none;z-index:10;font-size:22px;animation:rise 1s ease-out forwards}@keyframes rise{to{transform:translateY(-100px) rotate(35deg);opacity:0}}
+@media(max-width:800px){.portals{grid-template-columns:repeat(2,1fr)}.welcome{grid-template-columns:1fr}.bottom-grid{grid-template-columns:1fr}.moon{width:50px;height:50px;right:6%}.moon:after{width:50px;height:50px}.top-stats .pill:first-child{display:none}}
+@media(max-width:440px){header{padding:14px}.brand small{font-size:8px}.crest{width:42px;height:48px}.top-stats .pill{font-size:12px;padding:8px 10px}main{padding:0 12px 30px}.hero{padding:22px 12px;border-radius:22px}.portals{gap:9px}.portal{padding:13px;min-height:165px}.portal strong{font-size:14px}.portal small{font-size:12px}.card{padding:16px}.section-title{align-items:start;flex-direction:column}}
 </style>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <div class="brand-icon">🏰</div>
-    <div>
-      <h1>L’Académie des Hauts Rêves</h1>
-      <small>École de magie, de savoir et de créativité</small>
-    </div>
-  </div>
-  <div class="score">✨ <span id="points">0</span> éclats</div>
-</header>
-
+<header><div class="brand"><div class="crest">✦</div><div><h1>L’Académie des Hauts Rêves</h1><small>École des arts & des savoirs</small></div></div><div class="top-stats"><div class="pill">⭐ <span id="topPoints">0</span></div><button class="secondary" onclick="openProfile()">👤 Mon profil</button></div></header>
 <main>
-  <section class="hero">
-    <div class="eyebrow">✧ Le grimoire est ouvert ✧</div>
-    <div class="castle" aria-hidden="true">🏰</div>
-    <h2 id="welcome">Bienvenue, jeune apprentie !</h2>
-    <p>Au-delà des nuages se trouve une académie extraordinaire. Chaque défi accompli révèle un nouveau pouvoir. Ton aventure commence ici.</p>
-    <div class="hero-actions">
-      <button class="btn" onclick="startQuest()">✨ Commencer une quête</button>
-      <button class="btn secondary" onclick="openModal('profileModal')">🪄 Personnaliser mon profil</button>
-    </div>
-  </section>
-
-  <div class="section-heading">
-    <div><h2>Les portails du savoir</h2><p>Choisis une salle et fais grandir tes pouvoirs.</p></div>
-  </div>
-  <section class="grid">
-    <button class="portal" onclick="openSubject('francais')"><span class="emoji">📜</span><h3>Tour des mots</h3><p>Français · Vocabulaire et grammaire</p><span class="enter">Entrer dans la tour →</span></button>
-    <button class="portal" onclick="openSubject('maths')"><span class="emoji">🔮</span><h3>Laboratoire des nombres</h3><p>Mathématiques · Calcul et logique</p><span class="enter">Entrer au laboratoire →</span></button>
-    <button class="portal" onclick="openSubject('espagnol')"><span class="emoji">🌞</span><h3>Patio enchanté</h3><p>Espagnol · Mots et expressions</p><span class="enter">Entrer au patio →</span></button>
-    <button class="portal" onclick="openSubject('musique')"><span class="emoji">🎼</span><h3>Galerie des sons</h3><p>Musique · Culture et écoute</p><span class="enter">Entrer dans la galerie →</span></button>
-    <button class="portal" onclick="openCreative()"><span class="emoji">🎨</span><h3>Atelier des artistes</h3><p>Dessin, théâtre et imagination</p><span class="enter">Créer une œuvre →</span></button>
-    <button class="portal" onclick="openJournal()"><span class="emoji">📖</span><h3>Journal magique</h3><p>Écris tes idées et tes découvertes.</p><span class="enter">Ouvrir le journal →</span></button>
-    <button class="portal" onclick="openTimer()"><span class="emoji">⏳</span><h3>Sablier du temps</h3><p>Une séance courte, concentrée et efficace.</p><span class="enter">Lancer le sablier →</span></button>
-    <button class="portal" onclick="showBadges()"><span class="emoji">🏆</span><h3>Galerie des exploits</h3><p>Retrouve tes points et tes récompenses.</p><span class="enter">Voir mes exploits →</span></button>
-  </section>
-
-  <section class="panel-grid">
-    <div class="panel">
-      <h3>🌟 Ta progression d’apprentie</h3>
-      <p id="levelText">Niveau 1 · Étincelle naissante</p>
-      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-      <p id="progressText">0 / 100 éclats vers le niveau suivant</p>
-      <div class="badges" id="badgeList"></div>
-    </div>
-    <div class="panel">
-      <h3>🦉 Le conseil de la chouette</h3>
-      <p id="dailyTip">Un petit effort aujourd’hui peut devenir un grand talent demain.</p>
-      <button class="btn secondary" onclick="newTip()">Un autre conseil ✨</button>
-    </div>
-  </section>
+<section class="hero"><div class="moon"></div><div class="hero-content"><div class="eyebrow">✧ Année scolaire enchantée ✧</div><div class="hero-art"><span>🏰</span><span>🦉</span><span>✨</span></div><h2>La magie commence ici</h2><p>Bienvenue, jeune rêveuse. Franchis les portes de l’Académie, relève des défis et fais grandir tes pouvoirs, une découverte à la fois.</p><button class="primary" onclick="dailyQuest()">✦ Découvrir ma quête du jour</button></div></section>
+<section class="welcome"><div class="card"><h3>📜 Ton grimoire personnel</h3><div class="profile-row"><div class="avatar" id="profileAvatar">🧙‍♀️</div><div><div class="profile-name" id="profileName">Nouvelle apprentie</div><div class="level" id="profileLevel">Niveau 1 · Novice des étoiles</div></div></div><div class="progress"><span id="progressBar"></span></div><p class="muted" id="progressText">0 / 100 étoiles pour le prochain niveau</p><button class="secondary" onclick="openProfile()">Personnaliser mon grimoire</button></div>
+<div class="card"><h3>🌙 La prophétie du jour</h3><p class="muted" id="prophecy">Les étoiles sourient à celles et ceux qui osent essayer. Une petite victoire aujourd’hui prépare un grand sort demain.</p><div class="mission"><div class="mission-icon">🪄</div><div><strong id="questTitle">Une première étincelle</strong><p id="questDesc">Choisis une salle et termine une activité pour gagner tes premières étoiles.</p></div></div></div></section>
+<div class="section-title"><div><h2>Les salles enchantées</h2><p>Chaque porte cache un défi. Laquelle vas-tu ouvrir ?</p></div><div class="pill">🏅 <span id="badgeCount">0</span> badges</div></div>
+<section class="portals">
+<button class="portal" style="--glow:#f5a5c9" onclick="startQuiz('fr')"><span class="icon">📚</span><strong>Bibliothèque des mots</strong><small>Français · vocabulaire et grammaire</small><span class="tag">+ étoiles à gagner</span></button>
+<button class="portal" style="--glow:#9f8cff" onclick="startQuiz('math')"><span class="icon">🔮</span><strong>Tour des énigmes</strong><small>Mathématiques · logique et calcul</small><span class="tag">+ étoiles à gagner</span></button>
+<button class="portal" style="--glow:#ffb46e" onclick="startQuiz('es')"><span class="icon">🌞</span><strong>Jardin espagnol</strong><small>Espagnol · mots et expressions</small><span class="tag">¡Vamos!</span></button>
+<button class="portal" style="--glow:#7ee2db" onclick="startQuiz('music')"><span class="icon">🎼</span><strong>Conservatoire céleste</strong><small>Musique · rythme et instruments</small><span class="tag">À toi de jouer</span></button>
+<button class="portal" style="--glow:#ff8db4" onclick="openCreative()"><span class="icon">🎨</span><strong>Atelier des imaginaires</strong><small>Dessin, théâtre et histoires</small><span class="tag">Libère ta créativité</span></button>
+<button class="portal" style="--glow:#f4d16e" onclick="openJournal()"><span class="icon">📖</span><strong>Journal des merveilles</strong><small>Note tes idées et tes victoires</small><span class="tag">Ton espace secret</span></button>
+<button class="portal" style="--glow:#8dc6ff" onclick="openTimer()"><span class="icon">⏳</span><strong>Sablier de concentration</strong><small>Un temps calme pour mieux apprendre</small><span class="tag">Mode focus</span></button>
+<button class="portal" style="--glow:#d8a1ff" onclick="openBadges()"><span class="icon">🏆</span><strong>Galerie des exploits</strong><small>Tous les badges récoltés</small><span class="tag">Tes souvenirs magiques</span></button>
+</section>
+<section class="bottom-grid"><div class="card"><h3>✨ Tes badges d’apprentie</h3><p class="muted">Chaque essai compte. Les badges apparaîtront ici au fil de tes aventures.</p><div class="badge-list" id="badgeList"></div></div><div class="card"><h3>🦉 Conseil de la chouette</h3><p class="muted">Tu n’as pas besoin de tout réussir du premier coup. Relire, essayer autrement et demander de l’aide font aussi partie de la magie.</p><div class="mission"><div class="mission-icon">🌟</div><div><strong>Le secret des Hauts Rêves</strong><p>La régularité vaut mieux qu’une longue session épuisante.</p></div></div></div></section>
+<footer>Un petit pas par jour, une grande aventure toute l’année ✧ Les progrès sont enregistrés sur cet appareil.</footer>
 </main>
-
-<footer>✦ L’Académie des Hauts Rêves · Ici, la curiosité est une forme de magie. ✦</footer>
-
-<div class="modal" id="activityModal" role="dialog" aria-modal="true">
-  <div class="dialog">
-    <button class="close" onclick="closeModal('activityModal')">Fermer ✕</button>
-    <div id="activityContent"></div>
-  </div>
-</div>
-
-<div class="modal" id="profileModal" role="dialog" aria-modal="true">
-  <div class="dialog">
-    <button class="close" onclick="closeModal('profileModal')">Fermer ✕</button>
-    <h2>🪄 Ton identité magique</h2>
-    <label for="playerName">Quel nom veux-tu utiliser dans l’académie ?</label>
-    <input class="field" id="playerName" maxlength="30" placeholder="Ton prénom ou ton nom magique">
-    <label for="avatarChoice">Choisis ton compagnon</label>
-    <select class="field" id="avatarChoice">
-      <option value="🦉">🦉 Chouette sage</option>
-      <option value="🐈‍⬛">🐈‍⬛ Chat des ombres</option>
-      <option value="🦊">🦊 Renard des étoiles</option>
-      <option value="🐉">🐉 Petit dragon</option>
-      <option value="🦄">🦄 Licorne rêveuse</option>
-    </select>
-    <button class="btn" onclick="saveProfile()">Enregistrer mon profil</button>
-  </div>
-</div>
-
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="dialog"><div class="dialog-head"><h2 id="modalTitle">Bienvenue</h2><button class="close" onclick="closeModal()" aria-label="Fermer">×</button></div><div id="modalBody"></div></div></div>
 <script>
-const initialData = {name:"",avatar:"🦉",points:0,answers:0,badges:[],journal:""};
-let data;
-try {
-  data = {...initialData,...JSON.parse(localStorage.getItem("hautsRevesV2")||"{}")};
-} catch { data={...initialData}; }
-
-const quizzes = {
- francais:[
-  {q:"Dans « Le vieux château dort sous la lune », quel est l’adjectif ?",a:["vieux","château","dort","lune"],correct:0,why:"« Vieux » précise le nom « château » : c’est un adjectif qualificatif."},
-  {q:"Quel est le sujet dans « Les apprenties ouvrent le grimoire » ?",a:["le grimoire","ouvrent","Les apprenties","le"],correct:2,why:"Ce sont « les apprenties » qui font l’action d’ouvrir."},
-  {q:"Quel mot est un synonyme de « courageux » ?",a:["craintif","brave","endormi","silencieux"],correct:1,why:"« Brave » signifie courageux."},
-  {q:"Dans « Nous avons trouvé une clé », quel est le verbe ?",a:["Nous","avons trouvé","une","clé"],correct:1,why:"« Avons trouvé » est le verbe au passé composé."}
- ],
- maths:[
-  {q:"Combien font 7 × 8 ?",a:["54","56","64","48"],correct:1,why:"7 × 8 = 56."},
-  {q:"Quelle est la moitié de 3/4 ?",a:["3/8","1/2","2/4","3/2"],correct:0,why:"La moitié de 3/4 est 3/8."},
-  {q:"Un livre coûte 12 €. Tu en achètes 3. Combien paies-tu ?",a:["24 €","30 €","36 €","15 €"],correct:2,why:"12 × 3 = 36 €."},
-  {q:"Quel nombre est premier ?",a:["21","27","29","33"],correct:2,why:"29 n’a que deux diviseurs : 1 et 29."}
- ],
- espagnol:[
-  {q:"Comment dit-on « bonjour » en espagnol ?",a:["Adiós","Gracias","Hola","Por favor"],correct:2,why:"« Hola » signifie bonjour ou salut."},
-  {q:"Que signifie « gracias » ?",a:["Merci","Bonsoir","À demain","Pardon"],correct:0,why:"« Gracias » signifie merci."},
-  {q:"Comment dit-on « le livre » ?",a:["La mesa","El libro","La casa","El agua"],correct:1,why:"« Libro » signifie livre et est masculin : el libro."},
-  {q:"Que signifie « tengo doce años » ?",a:["J’ai douze ans","J’ai douze livres","Je suis grand","J’aime lire"],correct:0,why:"En espagnol, l’âge s’exprime avec le verbe tener : avoir."}
- ],
- musique:[
-  {q:"Combien de lignes comporte une portée musicale classique ?",a:["4","5","6","7"],correct:1,why:"Une portée musicale comporte cinq lignes et quatre interlignes."},
-  {q:"Quel instrument possède généralement 88 touches ?",a:["La flûte","Le violon","Le piano","La trompette"],correct:2,why:"Un piano moderne standard possède généralement 88 touches."},
-  {q:"Quel terme indique une musique jouée doucement ?",a:["Fortissimo","Allegro","Piano","Presto"],correct:2,why:"En musique, « piano » signifie doucement."},
-  {q:"Quel compositeur a écrit la célèbre « Lettre à Élise » ?",a:["Mozart","Beethoven","Vivaldi","Chopin"],correct:1,why:"La pièce pour piano « Lettre à Élise » est attribuée à Beethoven."}
- ]
+const $=id=>document.getElementById(id);
+const defaultState={name:"Nouvelle apprentie",avatar:"🧙‍♀️",points:0,completed:0,badges:[],journal:"",creative:"",daily:""};
+let state={...defaultState,...JSON.parse(localStorage.getItem("hautsRevesV2")||"{}")};
+const badgeDefs=[["first","✨ Première étincelle","Terminer une activité"],["five","🌟 Petite constellation","Gagner 50 étoiles"],["hundred","💫 Cent étoiles","Gagner 100 étoiles"],["creative","🎨 Artiste des rêves","Créer dans l’atelier"],["journal","📖 Gardienne du grimoire","Écrire dans le journal"],["focus","⏳ Maîtresse du temps","Terminer une séance focus"],["scholar","🦉 Esprit curieux","Terminer 5 activités"]];
+const quizzes={
+fr:{title:"Bibliothèque des mots",questions:[["Quel mot est un adjectif ?","rapidement","lumineux","courir",1,"Un adjectif décrit un nom : un ciel lumineux."],["Dans « Les élèves lisent », quel est le verbe ?","élèves","les","lisent",2,"« Lisent » indique l’action."],["Quel est le contraire de « courageux » ?","peureux","vaillant","brave",0,"« Peureux » est le contraire de courageux."]]},
+math:{title:"Tour des énigmes",questions:[["Combien font 7 × 8 ?","54","56","64",1,"7 × 8 = 56."],["La moitié de 3/4, c’est…","3/8","1/4","6/4",0,"La moitié de 3/4 est 3/8."],["Un rectangle mesure 5 cm sur 3 cm. Son périmètre est…","8 cm","15 cm","16 cm",2,"Périmètre = 5 + 3 + 5 + 3 = 16 cm."]]},
+es:{title:"Jardin espagnol",questions:[["Que signifie « hola » ?","Au revoir","Bonjour","Merci",1,"« Hola » signifie bonjour / salut."],["Comment dit-on « merci » ?","Gracias","Por favor","Adiós",0,"« Gracias » signifie merci."],["Que signifie « el libro » ?","Le cahier","La plume","Le livre",2,"« El libro » signifie le livre."]]},
+music:{title:"Conservatoire céleste",questions:[["Combien de temps dure une noire en mesure simple ?","Un temps","Deux temps","Quatre temps",0,"La noire vaut généralement un temps."],["Quel instrument possède des touches noires et blanches ?","La flûte","Le piano","Le violon",1,"Le piano possède des touches."],["Lequel est un instrument à cordes ?","Le violon","La trompette","La clarinette",0,"Le violon est un instrument à cordes frottées."]]}
 };
-const tips=[
- "Lis une consigne deux fois : les indices les plus utiles sont parfois cachés dans les détails.",
- "Une erreur est une carte qui te montre un chemin à explorer.",
- "Essaie 15 minutes de concentration, puis prends une petite pause.",
- "Explique une notion à voix haute comme si tu étais la professeure : c’est un excellent entraînement.",
- "Avant de commencer, choisis un objectif tout petit et précis.",
- "Le dessin, la musique et le théâtre peuvent aussi t’aider à mémoriser.",
- "Tu n’as pas besoin de tout réussir du premier coup pour progresser."
-];
-let currentQuiz=[],quizIndex=0,quizScore=0,currentSubject="";
-
-function persist(){localStorage.setItem("hautsRevesV2",JSON.stringify(data));render();}
-function render(){
- document.getElementById("points").textContent=data.points;
- document.getElementById("welcome").textContent=data.name ? `Bienvenue, ${data.name} ${data.avatar}!` : "Bienvenue, jeune apprentie !";
- const level=Math.floor(data.points/100)+1,progress=data.points%100;
- document.getElementById("levelText").textContent=`Niveau ${level} · ${["Étincelle naissante","Gardienne des grimoires","Enchanteresse des savoirs","Maîtresse des constellations"][Math.min(level-1,3)]}`;
- document.getElementById("progressFill").style.width=progress+"%";
- document.getElementById("progressText").textContent=`${progress} / 100 éclats vers le niveau suivant`;
- const all=[["Premier pas",data.answers>=1],["Esprit curieux",data.answers>=5],["Collectionneuse d’éclats",data.points>=100],["Grande exploratrice",data.answers>=10]];
- document.getElementById("badgeList").innerHTML=all.map(([n,ok])=>`<span class="badge ${ok?"":"locked"}">${ok?"🏅":"🔒"} ${n}</span>`).join("");
-}
-function openModal(id){document.getElementById(id).classList.add("open");}
-function closeModal(id){document.getElementById(id).classList.remove("open");}
-function showActivity(html){document.getElementById("activityContent").innerHTML=html;openModal("activityModal");}
-function startQuest(){
- const keys=Object.keys(quizzes),key=keys[Math.floor(Math.random()*keys.length)];
- openSubject(key);
-}
-function openSubject(subject){
- currentSubject=subject;currentQuiz=quizzes[subject];quizIndex=0;quizScore=0;
- const names={francais:"📜 Tour des mots",maths:"🔮 Laboratoire des nombres",espagnol:"🌞 Patio enchanté",musique:"🎼 Galerie des sons"};
- showActivity(`<p class="eyebrow">Quête de connaissance</p><h2>${names[subject]}</h2><p>Réponds aux quatre énigmes pour gagner des éclats magiques. Tu peux apprendre même si tu te trompes !</p><div id="quizArea"></div>`);
- showQuestion();
-}
-function showQuestion(){
- const item=currentQuiz[quizIndex];
- const area=document.getElementById("quizArea");
- if(!item){finishQuiz();return;}
- area.innerHTML=`<p class="eyebrow">Énigme ${quizIndex+1} sur ${currentQuiz.length}</p><div class="question"><p>${item.q}</p><div class="answers">${item.a.map((a,i)=>`<button class="answer" onclick="answerQuestion(${i})">${a}</button>`).join("")}</div><div id="feedback" class="result"></div></div><button class="btn" id="nextQuestion" style="display:none" onclick="nextQuestion()">Énigme suivante →</button>`;
-}
-function answerQuestion(index){
- const item=currentQuiz[quizIndex],buttons=document.querySelectorAll(".answer");
- buttons.forEach((b,i)=>{b.disabled=true;if(i===item.correct)b.classList.add("correct");else if(i===index)b.classList.add("wrong");});
- const correct=index===item.correct;
- if(correct)quizScore++;
- document.getElementById("feedback").textContent=(correct?"✨ Exact ! ":"🌱 Pas tout à fait. ")+item.why;
- document.getElementById("nextQuestion").style.display="inline-block";
-}
-function nextQuestion(){quizIndex++;showQuestion();}
-function finishQuiz(){
- const earned=quizScore*10+10;
- data.points+=earned;data.answers+=currentQuiz.length;
- persist();
- document.getElementById("quizArea").innerHTML=`<h3>🌟 Quête accomplie !</h3><p>Tu as obtenu ${quizScore}/${currentQuiz.length} bonnes réponses.</p><p>Tu gagnes ${earned} éclats magiques !</p><p>Relis les explications et reviens t’entraîner quand tu veux.</p><button class="btn" onclick="closeModal('activityModal')">Retour au château</button>`;
-}
-function saveProfile(){
- const name=document.getElementById("playerName").value.trim();
- data.name=name.slice(0,30);data.avatar=document.getElementById("avatarChoice").value;
- persist();closeModal("profileModal");
-}
-function openCreative(){
- showActivity(`<h2>🎨 Atelier des artistes</h2><p>Choisis un défi créatif. Chaque création terminée mérite 15 éclats magiques !</p><div class="question"><h3>🎭 Défi théâtre</h3><p>Imagine que tu es la gardienne du château. Écris trois phrases pour accueillir une nouvelle élève.</p></div><div class="question"><h3>✏️ Défi dessin</h3><p>Dessine sur papier le blason de ta maison magique : choisis un symbole, deux couleurs et une devise.</p></div><div class="question"><h3>📚 Défi écriture</h3><p>Invente le début d’une histoire où une porte secrète apparaît dans ta bibliothèque.</p></div><label for="creativeText">Note ici ton idée ou ta création :</label><textarea class="field" id="creativeText" placeholder="Il était une fois..."></textarea><button class="btn" onclick="completeCreative()">J’ai relevé le défi ✨</button>`);
- document.getElementById("creativeText").value=data.creativeText||"";
-}
-function completeCreative(){
- const text=document.getElementById("creativeText").value.trim();
- if(text.length<10){alert("Écris quelques mots sur ta création avant de valider !");return;}
- data.creativeText=text;data.points+=15;persist();
- showActivity(`<h2>🎉 Création enregistrée !</h2><p>Tu gagnes 15 éclats pour ton imagination. Continue à créer à ta façon !</p><button class="btn" onclick="closeModal('activityModal')">Retour au château</button>`);
-}
-function openJournal(){
- showActivity(`<h2>📖 Le journal magique</h2><p>Une idée, une découverte, une fierté ou une question : tout a sa place ici.</p><textarea class="field" id="journalText" placeholder="Aujourd’hui, j’ai découvert que..."></textarea><button class="btn" onclick="saveJournal()">Enregistrer dans mon journal</button><p id="journalFeedback" class="result"></p>`);
- document.getElementById("journalText").value=data.journal||"";
-}
-function saveJournal(){
- data.journal=document.getElementById("journalText").value;
- persist();document.getElementById("journalFeedback").textContent="Ton journal est conservé sur cet appareil. ✨";
-}
-let timerInterval=null,timerRemaining=15*60;
-function openTimer(){
- clearInterval(timerInterval);timerRemaining=15*60;
- showActivity(`<h2>⏳ Le sablier enchanté</h2><p>Choisis une petite tâche et concentre-toi tranquillement pendant 15 minutes.</p><div id="timerDisplay" style="font-size:52px;text-align:center;color:var(--gold);margin:25px">15:00</div><input class="field" id="timerTask" placeholder="Ma mission : relire ma leçon..."><button class="btn" onclick="runTimer()">Démarrer</button> <button class="btn secondary" onclick="pauseTimer()">Pause</button><p id="timerMessage" class="result"></p>`);
-}
-function runTimer(){
- if(timerInterval)return;
- timerInterval=setInterval(()=>{
-  timerRemaining--;
-  const el=document.getElementById("timerDisplay");
-  if(!el){pauseTimer();return;}
-  el.textContent=`${Math.floor(timerRemaining/60).toString().padStart(2,"0")}:${(timerRemaining%60).toString().padStart(2,"0")}`;
-  if(timerRemaining<=0){pauseTimer();data.points+=10;persist();document.getElementById("timerMessage").textContent="Bravo ! Séance terminée : +10 éclats magiques."; }
- },1000);
-}
-function pauseTimer(){clearInterval(timerInterval);timerInterval=null;}
-function showBadges(){
- showActivity(`<h2>🏆 Galerie des exploits</h2><p>Chaque éclat représente le temps et l’attention que tu as consacrés à apprendre.</p><div class="badges" style="margin:20px 0">${document.getElementById("badgeList").innerHTML}</div><p>Total : ${data.points} éclats · Questions explorées : ${data.answers}</p><button class="btn" onclick="closeModal('activityModal')">Continuer l’aventure</button>`);
-}
-function newTip(){document.getElementById("dailyTip").textContent=tips[Math.floor(Math.random()*tips.length)];}
-render();
+function save(){localStorage.setItem("hautsRevesV2",JSON.stringify(state));render()}
+function level(){return Math.floor(state.points/100)+1}
+function addPoints(n){state.points+=n;state.completed++;if(!state.badges.includes("first"))state.badges.push("first");if(state.points>=50&&!state.badges.includes("five"))state.badges.push("five");if(state.points>=100&&!state.badges.includes("hundred"))state.badges.push("hundred");if(state.completed>=5&&!state.badges.includes("scholar"))state.badges.push("scholar");save();sparkles()}
+function render(){$("topPoints").textContent=state.points;$("profileName").textContent=state.name;$("profileAvatar").textContent=state.avatar;$("profileLevel").textContent=`Niveau ${level()} · ${["Novice des étoiles","Apprentie des constellations","Gardienne des sortilèges","Mage des Hauts Rêves"][Math.min(level()-1,3)]}`;$("progressBar").style.width=(state.points%100)+"%";$("progressText").textContent=`${state.points%100} / 100 étoiles pour le prochain niveau`;$("badgeCount").textContent=state.badges.length;$("badgeList").innerHTML=badgeDefs.map(b=>`<span class="badge ${state.badges.includes(b[0])?"":"off"}">${b[1]}</span>`).join("")}
+function openModal(title,body){$("modalTitle").textContent=title;$("modalBody").innerHTML=body;$("modal").classList.add("open")}
+function closeModal(){$("modal").classList.remove("open")}
+function openProfile(){openModal("Ton identité magique",`<p class="muted">Choisis ton nom d’apprentie et ton avatar. Tu pourras les changer quand tu veux.</p><label for="nameField">Ton prénom ou surnom</label><input id="nameField" class="field" maxlength="24" placeholder="Ex. Luna" value="${escapeHtml(state.name==="Nouvelle apprentie"?"":state.name)}"><p>Choisis ton avatar</p><div class="choices">${["🧙‍♀️","🧙","🦊","🐈‍⬛","🦉","🧚","🐉","🌙"].map(a=>`<button class="choice ${state.avatar===a?"selected":""}" onclick="pickAvatar('${a}',this)" style="font-size:25px">${a}</button>`).join("")}</div><button class="primary" onclick="saveProfile()">Enregistrer mon grimoire ✨</button>`)}
+function pickAvatar(a,el){state.avatar=a;document.querySelectorAll(".choices .choice").forEach(x=>x.classList.remove("selected"));el.classList.add("selected")}
+function saveProfile(){let n=$("nameField").value.trim();if(n)state.name=n;save();closeModal();sparkles()}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+let quizKey="",qIndex=0,correctCount=0;
+function startQuiz(key){quizKey=key;qIndex=0;correctCount=0;showQuestion()}
+function showQuestion(){const q=quizzes[quizKey],item=q.questions[qIndex];if(!item){let earned=correctCount*10+5;openModal("Défi terminé ✨",`<div class="hero-art" style="font-size:54px">🏆</div><p>Tu as trouvé <strong>${correctCount} bonne(s) réponse(s)</strong> sur ${q.questions.length}.</p><p class="notice">+${earned} étoiles pour ton grimoire !</p><p class="muted">Chaque question est une occasion d’apprendre. Reviens quand tu veux pour retenter le défi.</p><button class="primary" onclick="addPoints(${earned});closeModal()">Réclamer mes étoiles</button>`);return}
+openModal(q.title,`<p class="muted">Question ${qIndex+1} sur ${q.questions.length} · Chaque bonne réponse rapporte 10 étoiles.</p><div class="progress"><span style="width:${qIndex/q.questions.length*100}%"></span></div><div class="question">${item[0]}</div><div class="answers">${item.slice(1,4).map((a,i)=>`<button class="answer" onclick="answer(${i},this)">${a}</button>`).join("")}</div><div class="feedback" id="feedback"></div><div class="dialog-actions"><button class="primary" id="nextBtn" style="display:none" onclick="qIndex++;showQuestion()">Question suivante →</button></div>`)}
+function answer(i,el){let item=quizzes[quizKey].questions[qIndex];document.querySelectorAll(".answer").forEach((b,j)=>{b.disabled=true;if(j===item[4])b.classList.add("correct")});if(i===item[4]){correctCount++;$("feedback").textContent="✨ Exact ! "+item[5]}else{el.classList.add("wrong");$("feedback").textContent="Pas tout à fait. "+item[5]}$("nextBtn").style.display="inline-block"}
+function dailyQuest(){if(state.daily===new Date().toDateString()){openModal("Quête du jour",`<p>🌟 Tu as déjà accompli ta quête du jour ! Bravo pour ta régularité.</p><p class="muted">Tu peux continuer à explorer les salles enchantées.</p><button class="primary" onclick="closeModal()">À l’aventure !</button>`);return}openModal("La quête du jour",`<div class="hero-art" style="font-size:54px">🗺️✨</div><p><strong>Mission : explorer une salle enchantée.</strong></p><p class="muted">Choisis une activité parmi les salles, termine-la, et reviens valider ta quête pour gagner 10 étoiles bonus.</p><button class="primary" onclick="closeModal();state.daily=new Date().toDateString();addPoints(10);openModal('Quête accomplie !','<p class=notice>+10 étoiles bonus ! Tu as fait un pas de plus dans ton aventure.</p><button class=primary onclick=closeModal()>Merveilleux !</button>')">Valider ma quête ✨</button>`)}
+function openCreative(){openModal("Atelier des imaginaires",`<p class="muted">Écris une idée de dessin, une scène à jouer ou le début d’une histoire. Tu peux aussi dessiner sur papier et décrire ta création ici.</p><textarea id="creativeField" class="field" rows="5" placeholder="Aujourd’hui, j’imagine…">${escapeHtml(state.creative)}</textarea><div class="choices"><button class="choice" onclick="insertIdea('🎭 Une scène de théâtre où…')">🎭 Théâtre</button><button class="choice" onclick="insertIdea('🎨 Je dessinerais…')">🎨 Dessin</button><button class="choice" onclick="insertIdea('📚 Mon histoire commence quand…')">📚 Histoire</button></div><button class="primary" onclick="saveCreative()">Garder ma création (+15 ⭐)</button>`)}
+function insertIdea(t){$("creativeField").value+=($("creativeField").value?"\n":"")+t}
+function saveCreative(){let val=$("creativeField").value.trim();if(!val){$("creativeField").focus();return}state.creative=val;if(!state.badges.includes("creative"))state.badges.push("creative");addPoints(15);closeModal();openModal("Création sauvegardée 🎨","<p>Ton idée est conservée dans ce navigateur. Bravo pour cette étincelle d’imagination !</p><button class=primary onclick=closeModal()>Continuer</button>")}
+function openJournal(){openModal("Journal des merveilles",`<p class="muted">Une victoire, une chose apprise, une idée pour demain… Ce journal est ton petit coin à toi sur cet appareil.</p><textarea id="journalField" class="field" rows="6" placeholder="Aujourd’hui, je suis fière de…">${escapeHtml(state.journal)}</textarea><button class="primary" onclick="saveJournal()">Enregistrer dans mon grimoire</button>`)}
+function saveJournal(){state.journal=$("journalField").value;if(state.journal.trim()&&!state.badges.includes("journal"))state.badges.push("journal");save();closeModal();openModal("Une page de plus 📖","<p>Ton journal est sauvegardé sur cet appareil. Merci d’avoir pris un instant pour toi.</p><button class=primary onclick=closeModal()>Fermer</button>")}
+let timerInterval=null,secondsLeft=15*60;
+function openTimer(){secondsLeft=15*60;openModal("Sablier de concentration",`<p class="muted">Choisis un petit temps de concentration. Pose de l’eau près de toi, éloigne les distractions, puis fais une pause.</p><div id="timerDisplay" style="font:700 54px Cinzel;text-align:center;color:var(--gold);padding:20px">15:00</div><div class="choices" style="justify-content:center"><button class="choice" onclick="setTimer(5)">5 min</button><button class="choice selected" onclick="setTimer(15)">15 min</button><button class="choice" onclick="setTimer(20)">20 min</button></div><div class="dialog-actions"><button class="primary" id="timerButton" onclick="toggleTimer()">▶ Démarrer</button><button class="secondary" onclick="resetTimer()">↺ Recommencer</button></div><p class="muted" id="timerHint">Un petit pas à la fois.</p>`)}
+function setTimer(m){if(timerInterval)clearInterval(timerInterval);timerInterval=null;secondsLeft=m*60;$("timerDisplay").textContent=`${m}:00`;$("timerButton").textContent="▶ Démarrer"}
+function toggleTimer(){if(timerInterval){clearInterval(timerInterval);timerInterval=null;$("timerButton").textContent="▶ Reprendre";return}$("timerButton").textContent="Ⅱ Pause";timerInterval=setInterval(()=>{secondsLeft--;$("timerDisplay").textContent=`${Math.floor(secondsLeft/60)}:${String(secondsLeft%60).padStart(2,"0")}`;if(secondsLeft<=0){clearInterval(timerInterval);timerInterval=null;$("timerButton").textContent="Terminé";$("timerHint").textContent="Bravo ! Tu as pris soin de ta concentration.";if(!state.badges.includes("focus"))state.badges.push("focus");addPoints(10);sparkles()}},1000)}
+function resetTimer(){if(timerInterval)clearInterval(timerInterval);timerInterval=null;secondsLeft=15*60;$("timerDisplay").textContent="15:00";$("timerButton").textContent="▶ Démarrer";$("timerHint").textContent="Un petit pas à la fois."}
+function openBadges(){openModal("Galerie des exploits",`<p class="muted">Les badges sont des souvenirs de tes efforts. Certains arrivent en essayant, d’autres avec la pratique.</p><div class="badge-list">${badgeDefs.map(b=>`<span class="badge ${state.badges.includes(b[0])?"":"off"}">${b[1]}<br><small>${b[2]}</small></span>`).join("")}</div>`)}
+function sparkles(){for(let i=0;i<12;i++){let e=document.createElement("span");e.className="spark";e.textContent=["✨","⭐","💫","✦"][Math.floor(Math.random()*4)];e.style.left=(20+Math.random()*60)+"vw";e.style.top=(40+Math.random()*40)+"vh";document.body.appendChild(e);setTimeout(()=>e.remove(),1000)}}
+$("modal").addEventListener("click",e=>{if(e.target===$("modal"))closeModal()});
+render();if(state.name==="Nouvelle apprentie")setTimeout(openProfile,500);
 </script>
-</body>
-</html>
+</body></html>
