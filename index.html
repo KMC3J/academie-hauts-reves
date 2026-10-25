@@ -3,158 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#291944">
-<title>L'Académie des Hauts Rêves ✨</title>
+<meta name="theme-color" content="#170e32">
+<title>L'Académie des Hauts Rêves</title>
 
 <style>
-* { box-sizing: border-box; }
-
 :root {
-  --nuit: #211633;
-  --violet: #65449a;
-  --or: #f5d783;
-  --creme: #fff8ed;
-  --vert: #c9efcb;
+  --night: #170e32;
+  --purple: #39215e;
+  --gold: #f6d58b;
+  --cream: #fff3d8;
+  --pink: #e8a7e9;
 }
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
+  color: var(--cream);
   font-family: Georgia, serif;
-  color: var(--creme);
-  background: linear-gradient(145deg, #211633, #503575, #8260a5);
+  background:
+    radial-gradient(ellipse at 50% 0%, #79549b 0%, transparent 45%),
+    linear-gradient(160deg, #130d29, #382054 55%, #17112e);
   min-height: 100vh;
 }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
 
 header {
   text-align: center;
-  padding: 30px 15px;
-  background: #211633dd;
-  border-bottom: 2px solid var(--or);
+  padding: 30px 15px 22px;
+  background: linear-gradient(180deg,#160d2af2,#291744cc);
+  border-bottom: 1px solid var(--gold);
 }
-
-header .logo { font-size: 48px; }
-
+.brand { font-size: 42px; }
 h1 {
-  color: var(--or);
-  font-size: clamp(27px, 5vw, 43px);
-  margin: 10px 0;
+  color: var(--gold);
+  font-size: clamp(28px,5vw,48px);
+  margin: 8px 0;
+  text-shadow: 0 0 25px #f4c77c55;
 }
+.subtitle { color: #ead9ff; }
 
-header p { margin-bottom: 0; }
-
-main {
-  max-width: 1000px;
-  margin: auto;
-  padding: 18px;
+.topbar {
+  max-width: 1050px;
+  margin: 15px auto 0;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
 }
-
-section {
-  margin: 18px 0;
-  padding: 22px;
-  border: 1px solid #f5d78388;
-  border-radius: 18px;
-  background: #ffffff0d;
+.pill {
+  border: 1px solid #f6d58b88;
+  background: #180e30cc;
+  border-radius: 30px;
+  padding: 10px 16px;
 }
+.gold { color: var(--gold); }
 
-h2, h3 { color: var(--or); }
+main { max-width: 1100px; margin: auto; padding: 18px; }
 
-button, input, select {
-  font: inherit;
-  padding: 12px;
-  border-radius: 10px;
-  max-width: 100%;
+.welcome {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 28px 18px;
+  margin: 18px 0 24px;
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at 50% 120%,#a56acb66,transparent 65%),
+    linear-gradient(120deg,#30204d,#1c1437,#493060);
+  box-shadow: 0 12px 45px #08051966;
 }
-
-button {
-  background: var(--or);
-  color: #291944;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 5px 3px;
-}
-
-button:hover { background: #ffe9a8; }
-
-button:focus-visible, input:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 3px;
-}
-
-input, select {
-  border: 1px solid #d4c0ee;
-  background: white;
-  color: #291944;
-}
-
-.grille {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 14px;
-}
-
-.portail {
-  padding: 18px;
-  border-radius: 14px;
-  background: #ffffff10;
-  border: 1px solid #ffffff25;
-}
-
-.icone { font-size: 38px; }
-
-.cache { display: none; }
-
-#question {
-  font-size: 21px;
-  line-height: 1.5;
-}
-
-#reponses button {
+.welcome:before {
+  content: "✦       ✧        ✦       ✧       ✦";
   display: block;
-  width: 100%;
-  text-align: left;
-  background: var(--creme);
+  color: var(--gold);
+  letter-spacing: 12px;
+  margin-bottom: 12px;
 }
+.welcome h2 { font-size: clamp(24px,4vw,35px); margin: 8px; }
+.welcome p { line-height: 1.7; }
 
-#feedback {
-  line-height: 1.6;
-  min-height: 25px;
+input, textarea {
+  width: 100%;
+  max-width: 380px;
+  padding: 12px;
+  border: 1px solid #d7b9f5;
+  border-radius: 10px;
+  background: #fff9ee;
+  color: #24143c;
+  margin: 5px 0;
 }
+button {
+  border: 1px solid #ffe7a9;
+  color: #24143c;
+  font-weight: bold;
+  background: linear-gradient(135deg,#ffe9a8,#dcae52);
+  padding: 11px 17px;
+  border-radius: 25px;
+  transition: transform .2s, filter .2s;
+}
+button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+
+h2, h3 { color: var(--gold); }
+
+.section-title { text-align: center; margin: 30px 0 18px; }
+
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 17px;
+}
+.room {
+  --accent: #e5bd67;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 22px 16px;
+  min-height: 235px;
+  border: 1px solid var(--accent);
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 50% 15%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 65%),
+    linear-gradient(160deg,#33204f,#17112e);
+  box-shadow: 0 8px 25px #08051955;
+  transition: transform .25s, box-shadow .25s;
+}
+.room:hover { transform: translateY(-5px); box-shadow: 0 12px 30px #08051999; }
+.room .icon { font-size: 45px; filter: drop-shadow(0 0 12px var(--accent)); }
+.room h3 { color: var(--accent); font-size: 23px; }
+.room p { line-height: 1.5; min-height: 42px; }
+.room button { background: var(--accent); }
+.room.goldroom { --accent:#f2bd57; }
+.room.blueroom { --accent:#6bc7f3; }
+.room.redroom { --accent:#ff9a91; }
+.room.purpleroom { --accent:#d4a0ff; }
+.room.greenroom { --accent:#a7e5a4; }
+.room.cyanroom { --accent:#6de4e2; }
+
+.panel {
+  padding: 23px;
+  margin: 22px 0;
+  border: 1px solid #d8b66d88;
+  border-radius: 18px;
+  background: #1d1438dd;
+  box-shadow: 0 10px 30px #08051944;
+}
+.panel p { line-height: 1.7; }
 
 .stats {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
   text-align: center;
+  gap: 10px;
 }
+.stat { background:#ffffff09; border-radius:12px; padding:15px 5px; }
+.stat strong { display:block; color:var(--gold); font-size:27px; margin-bottom:6px; }
+progress { width:100%; height:15px; accent-color:#edc76d; }
 
-.stat strong {
-  display: block;
-  font-size: 26px;
-  color: var(--or);
-}
+.hidden { display:none !important; }
+#question { font-size:21px; line-height:1.5; }
+#answers { display:grid; gap:9px; }
+#answers button { width:100%; text-align:left; background:#fff3d8; }
+#feedback { min-height:28px; line-height:1.6; }
+#clock { text-align:center; font-size:54px; color:var(--gold); margin:20px; }
 
-#horloge {
-  font-size: 48px;
-  text-align: center;
-  color: var(--or);
-}
+.grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:15px; }
+.small { font-size:14px; color:#d8c8ee; }
 
-progress { width: 100%; accent-color: var(--or); }
+footer { text-align:center; padding:30px 15px; color:#d9c9f1; }
 
-footer {
-  text-align: center;
-  padding: 24px;
-  color: #e8ddfa;
-}
-
-.petits { font-size: 14px; line-height: 1.5; }
-
-@media (max-width: 480px) {
-  main { padding: 10px; }
-  section { padding: 16px; }
-  header { padding: 22px 12px; }
+@media(max-width:500px) {
+  main { padding:12px; }
+  .welcome { padding:22px 12px; }
+  .room { min-height:210px; }
+  .stats { grid-template-columns:1fr; }
+  .stat strong { font-size:23px; }
 }
 </style>
 </head>
@@ -162,369 +189,331 @@ footer {
 <body>
 
 <header>
-  <div class="logo">🏰 ✨ 🪄</div>
+  <div class="brand">✦ 📖 ✦</div>
   <h1>L'Académie des Hauts Rêves</h1>
-  <p>Un monde magique pour apprendre, créer et rêver.</p>
+  <div class="subtitle">Apprendre · Créer · Rêver</div>
 </header>
+
+<div class="topbar">
+  <div class="pill">🦉 <span id="miniName">Jeune rêveuse</span></div>
+  <div class="pill">💎 <span id="points">0</span> points magiques</div>
+  <div class="pill">⭐ Niveau <span id="level">1</span></div>
+</div>
 
 <main>
 
-<section>
-  <h2>🌙 Bienvenue, jeune apprentie !</h2>
-  <p>Quel sera ton nom magique ?</p>
-  <input id="prenom" maxlength="30" placeholder="Ton prénom ou pseudonyme">
-  <button onclick="saluer()">Entrer dans l'Académie</button>
-  <p id="accueil" aria-live="polite">Les portes magiques t'attendent !</p>
+<section class="welcome">
+  <div style="font-size:52px">🏰 ✨ 🦉</div>
+  <h2 id="welcomeTitle">Les portes s'ouvrent devant toi...</h2>
+  <p>Une nouvelle aventure commence. Choisis ton nom magique et découvre les secrets de l'Académie.</p>
+  <input id="nameInput" maxlength="25" placeholder="Ton prénom ou ton nom magique">
+  <br>
+  <button onclick="setName()">Entrer dans l'Académie ✨</button>
 </section>
 
-<section>
-  <h2>🏆 Ton grimoire des réussites</h2>
-  <div class="stats">
-    <div class="stat"><strong id="points">0</strong>Points magiques</div>
-    <div class="stat"><strong id="bonnes">0</strong>Bonnes réponses</div>
-    <div class="stat"><strong id="badges">0</strong>Badges</div>
-  </div>
-  <p id="rang">Rang : Apprentie des étoiles ✨</p>
-  <progress id="progression" value="0" max="50"></progress>
-  <p class="petits">Tes progrès sont conservés dans le navigateur de cet appareil.</p>
+<h2 class="section-title">✧ Les portails enchantés ✧</h2>
+
+<section class="rooms">
+  <article class="room goldroom">
+    <div class="icon">📜</div>
+    <h3>Le Grimoire</h3>
+    <p>Explore les mots, la grammaire et les mystères du français.</p>
+    <button onclick="startQuiz('fr')">Ouvrir le grimoire</button>
+  </article>
+
+  <article class="room blueroom">
+    <div class="icon">🔮</div>
+    <h3>La Tour des nombres</h3>
+    <p>Résous des énigmes et maîtrise les nombres.</p>
+    <button onclick="startQuiz('math')">Résoudre une énigme</button>
+  </article>
+
+  <article class="room redroom">
+    <div class="icon">🇪🇸</div>
+    <h3>L'Atelier espagnol</h3>
+    <p>Apprends du vocabulaire et parle une nouvelle langue.</p>
+    <button onclick="startQuiz('es')">¡Vamos!</button>
+  </article>
+
+  <article class="room purpleroom">
+    <div class="icon">🎵</div>
+    <h3>La Salle des mélodies</h3>
+    <p>Découvre les instruments, les rythmes et les sons.</p>
+    <button onclick="startQuiz('music')">Écouter le savoir</button>
+  </article>
+
+  <article class="room greenroom">
+    <div class="icon">🌿</div>
+    <h3>La Forêt des passions</h3>
+    <p>Des défis de dessin, de théâtre et de lecture.</p>
+    <button onclick="showPanel('creative')">Explorer la forêt</button>
+  </article>
+
+  <article class="room cyanroom">
+    <div class="icon">⌛</div>
+    <h3>Le Sablier magique</h3>
+    <p>Organise ton temps et pense à faire des pauses.</p>
+    <button onclick="showPanel('timer')">Lancer le sablier</button>
+  </article>
 </section>
 
-<section>
-  <h2>🚪 Les salles de l'Académie</h2>
-  <div class="grille">
-
-    <div class="portail">
-      <div class="icone">📚</div>
-      <h3>Le grimoire des savoirs</h3>
-      <p>Français, mathématiques, histoire et sciences.</p>
-      <button onclick="ouvrirQuiz('general')">Commencer</button>
-    </div>
-
-    <div class="portail">
-      <div class="icone">🇪🇸</div>
-      <h3>L'atelier espagnol</h3>
-      <p>Vocabulaire et expressions utiles.</p>
-      <button onclick="ouvrirQuiz('espagnol')">¡Vamos!</button>
-    </div>
-
-    <div class="portail">
-      <div class="icone">🎵</div>
-      <h3>La salle des mélodies</h3>
-      <p>Instruments, rythme et musique.</p>
-      <button onclick="ouvrirQuiz('musique')">Jouer</button>
-    </div>
-
-    <div class="portail">
-      <div class="icone">⏳</div>
-      <h3>Le sablier magique</h3>
-      <p>Une séance de travail, puis une pause.</p>
-      <button onclick="afficher('timer')">Lancer le sablier</button>
-    </div>
-
-    <div class="portail">
-      <div class="icone">🌿</div>
-      <h3>La forêt enchantée</h3>
-      <p>Des défis créatifs pour faire travailler ton imagination.</p>
-      <button onclick="afficher('passions')">Explorer</button>
-    </div>
-
-    <div class="portail">
-      <div class="icone">📖</div>
-      <h3>Le journal magique</h3>
-      <p>Note une réussite ou une chose apprise aujourd'hui.</p>
-      <textarea id="journal" rows="3" maxlength="1000"
-        placeholder="Aujourd'hui, j'ai appris..."></textarea>
-      <button onclick="sauverJournal()">Enregistrer</button>
-      <p id="journalInfo" aria-live="polite"></p>
-    </div>
-
-  </div>
-</section>
-
-<section id="quiz" class="cache">
-  <h2 id="titreQuiz">📜 Le défi magique</h2>
-  <p id="compteur"></p>
+<section id="quizPanel" class="panel hidden">
+  <h2 id="quizTitle">📜 Défi magique</h2>
+  <p id="quizCount"></p>
   <p id="question"></p>
-  <div id="reponses"></div>
+  <div id="answers"></div>
   <p id="feedback" aria-live="polite"></p>
-  <button id="suivant" class="cache" onclick="suivante()">Question suivante ➜</button>
-  <button onclick="fermerQuiz()">Retour aux salles</button>
+  <button id="nextButton" class="hidden" onclick="nextQuestion()">Continuer ➜</button>
+  <button onclick="hidePanels()">Retour aux portails</button>
 </section>
 
-<section id="timer" class="cache">
-  <h2>⏳ Le sablier magique</h2>
-  <p>Choisis la durée de ta mission.</p>
-  <select id="duree" onchange="reglerTimer()">
+<section id="creative" class="panel hidden">
+  <h2>🌿 La Forêt des passions</h2>
+  <p>Choisis une activité pour nourrir ton imagination.</p>
+  <div class="grid2">
+    <div>
+      <h3>🎭 Le théâtre</h3>
+      <p id="theatreText">Imagine une magicienne qui a perdu sa voix.</p>
+      <button onclick="newChallenge('theatre')">Nouveau défi</button>
+    </div>
+    <div>
+      <h3>🎨 Le dessin</h3>
+      <p id="drawingText">Dessine un château suspendu dans les nuages.</p>
+      <button onclick="newChallenge('drawing')">Nouveau défi</button>
+    </div>
+    <div>
+      <h3>📚 La lecture</h3>
+      <p id="readingText">Imagine une autre fin à ton livre préféré.</p>
+      <button onclick="newChallenge('reading')">Nouveau défi</button>
+    </div>
+  </div>
+  <button onclick="hidePanels()">Retour aux portails</button>
+</section>
+
+<section id="timer" class="panel hidden">
+  <h2>⌛ Le Sablier magique</h2>
+  <p>Choisis une durée pour ta mission de révision.</p>
+  <select id="duration" onchange="resetTimer()">
     <option value="300">5 minutes</option>
     <option value="600">10 minutes</option>
     <option value="900" selected>15 minutes</option>
-    <option value="1200">20 minutes</option>
     <option value="1500">25 minutes</option>
   </select>
-  <div id="horloge" role="timer">15:00</div>
-  <button onclick="demarrer()">▶ Commencer</button>
-  <button onclick="pause()">⏸ Pause</button>
-  <button onclick="reglerTimer()">↺ Réinitialiser</button>
-  <p id="timerMessage" aria-live="polite">Tu peux y arriver, un pas à la fois !</p>
-</section>
-
-<section id="passions" class="cache">
-  <h2>🌿 La forêt des passions</h2>
-  <div class="grille">
-    <div class="portail">
-      <div class="icone">🎭</div>
-      <h3>Le théâtre</h3>
-      <p id="defiTheatre">Imagine une reine qui a perdu sa couronne.</p>
-      <button onclick="defi('theatre')">Autre défi</button>
-    </div>
-    <div class="portail">
-      <div class="icone">🎨</div>
-      <h3>Le dessin</h3>
-      <p id="defiDessin">Dessine une maison perchée sur un nuage.</p>
-      <button onclick="defi('dessin')">Autre défi</button>
-    </div>
-    <div class="portail">
-      <div class="icone">📖</div>
-      <h3>La lecture</h3>
-      <p id="defiLecture">Imagine une nouvelle fin à ton livre préféré.</p>
-      <button onclick="defi('lecture')">Autre défi</button>
-    </div>
+  <div id="clock">15:00</div>
+  <div style="text-align:center">
+    <button onclick="runTimer()">▶ Commencer</button>
+    <button onclick="pauseTimer()">⏸ Pause</button>
+    <button onclick="resetTimer()">↺ Recommencer</button>
   </div>
+  <p id="timerMessage" aria-live="polite">Chaque petit pas te rapproche de ton objectif.</p>
+  <button onclick="hidePanels()">Retour aux portails</button>
 </section>
 
-<section>
-  <h2>✨ Le conseil du jour</h2>
-  <p id="conseil">Tu n'as pas besoin de tout savoir aujourd'hui. Chaque progrès compte.</p>
-  <button onclick="conseil()">Un autre conseil</button>
+<section class="panel">
+  <h2>🏆 Ton parcours magique</h2>
+  <div class="stats">
+    <div class="stat"><strong id="correctCount">0</strong>Bonnes réponses</div>
+    <div class="stat"><strong id="badgeCount">0</strong>Badges gagnés</div>
+    <div class="stat"><strong id="level2">1</strong>Niveau</div>
+  </div>
+  <p class="gold">Progression vers le prochain niveau</p>
+  <progress id="progress" max="100" value="0"></progress>
+  <p id="rank">Rang : Apprentie des étoiles ✨</p>
+  <p class="small">Les progrès sont enregistrés sur cet appareil. Ils ne sont pas synchronisés automatiquement avec les autres appareils.</p>
+</section>
+
+<section class="panel">
+  <h2>🪶 Le journal des rêves</h2>
+  <p>Une chose apprise aujourd'hui, une idée ou une petite victoire ? Note-la ici.</p>
+  <textarea id="journal" rows="4" maxlength="1500" placeholder="Aujourd'hui, je suis fière de..."></textarea>
+  <br><button onclick="saveJournal()">Enregistrer dans mon journal</button>
+  <p id="journalMessage" aria-live="polite"></p>
+</section>
+
+<section class="panel">
+  <h2>🌟 Le conseil du hibou</h2>
+  <p id="advice">Les petites victoires d'aujourd'hui construisent les grands rêves de demain.</p>
+  <button onclick="newAdvice()">Un autre conseil</button>
 </section>
 
 </main>
 
 <footer>
-  <p>🏰 L'Académie des Hauts Rêves ✨</p>
-  <p class="petits">Apprendre avec curiosité, progresser à son rythme et garder du temps pour rêver.</p>
+  ✦ L'Académie des Hauts Rêves ✦
+  <p class="small">Apprendre à son rythme · Oser créer · Ne jamais cesser de rêver</p>
 </footer>
 
 <script>
-const questions = {
-  general: [
-    {q:"Dans « un château immense », quel mot est un adjectif ?",r:["Château","Un","Immense","Dans"],b:2,e:"Immense précise comment est le château."},
-    {q:"Combien font 7 × 8 ?",r:["54","56","64","48"],b:1,e:"7 × 8 = 56."},
-    {q:"Quelle planète est surnommée la planète rouge ?",r:["Vénus","Mars","Jupiter","Saturne"],b:1,e:"Mars paraît rougeâtre à cause des oxydes de fer."},
-    {q:"Combien de côtés possède un hexagone ?",r:["5","6","7","8"],b:1,e:"Un hexagone possède six côtés."},
-    {q:"Quel organe pompe le sang dans le corps ?",r:["Le cerveau","Le cœur","L'estomac","Le poumon"],b:1,e:"Le cœur fait circuler le sang."},
-    {q:"Quel est le pluriel de « cheval » ?",r:["Chevals","Chevaux","Chevales","Chevaus"],b:1,e:"Le pluriel de cheval est chevaux."}
-  ],
-  espagnol: [
-    {q:"Comment dit-on « bonjour » en espagnol ?",r:["Adiós","Hola","Gracias","Buenas noches"],b:1,e:"Hola signifie salut ou bonjour."},
-    {q:"Que signifie « gracias » ?",r:["S'il te plaît","Pardon","Merci","À demain"],b:2,e:"Gracias signifie merci."},
-    {q:"Comment dit-on « livre » en espagnol ?",r:["Libro","Mesa","Casa","Perro"],b:0,e:"Un livre se dit un libro."},
-    {q:"Que signifie « tengo doce años » ?",r:["J'ai douze ans","J'ai douze livres","Je suis en retard","J'aime lire"],b:0,e:"Cette expression signifie j'ai douze ans."},
-    {q:"Que signifie « azul » ?",r:["Rouge","Vert","Bleu","Jaune"],b:2,e:"Azul signifie bleu."},
-    {q:"Comment dit-on « s'il te plaît » ?",r:["Por favor","Hasta luego","De nada","Buenas tardes"],b:0,e:"Por favor signifie s'il te plaît."}
-  ],
-  musique: [
-    {q:"Combien de lignes comporte une portée musicale ?",r:["3","4","5","7"],b:2,e:"Une portée possède cinq lignes."},
-    {q:"Quel instrument possède généralement 88 touches ?",r:["La flûte","Le piano","Le violon","La trompette"],b:1,e:"Un piano standard possède généralement 88 touches."},
-    {q:"Que désigne le tempo ?",r:["La vitesse de la musique","Le compositeur","Le volume du public","La taille d'un instrument"],b:0,e:"Le tempo indique la vitesse de la musique."},
-    {q:"Quel instrument appartient à la famille des bois ?",r:["Le trombone","La clarinette","La harpe","Le violoncelle"],b:1,e:"La clarinette est un instrument à vent de la famille des bois."},
-    {q:"Quel signe musical indique un silence ?",r:["Une pause","Une clé de sol","Un dièse","Une barre de mesure"],b:0,e:"Les silences ont des signes spécifiques sur une partition."}
-  ]
+const quizzes = {
+fr:[
+{q:"Dans « une forêt mystérieuse », quel mot est un adjectif ?",a:["Forêt","Une","Mystérieuse","Dans"],c:2,e:"Mystérieuse précise le nom forêt."},
+{q:"Quel est le pluriel de « cheval » ?",a:["Chevals","Chevaux","Chevales","Chevaus"],c:1,e:"On écrit des chevaux."},
+{q:"Quel mot est un verbe dans « Le hibou observe la lune » ?",a:["Hibou","Observe","Lune","Le"],c:1,e:"Observe est le verbe de la phrase."},
+{q:"Quel est le contraire de « courageux » ?",a:["Audacieux","Vaillant","Craintif","Brave"],c:2,e:"Craintif est un contraire possible de courageux."},
+{q:"Quel signe termine normalement une question ?",a:[". Le point","? Le point d'interrogation","! Le point d'exclamation",": Les deux-points"],c:1,e:"Une question directe se termine par un point d'interrogation."}
+],
+math:[
+{q:"Combien font 7 × 8 ?",a:["54","56","64","48"],c:1,e:"7 × 8 = 56."},
+{q:"Combien vaut la moitié de 3/4 ?",a:["3/2","3/8","2/4","1/4"],c:1,e:"La moitié de 3/4 est 3/8."},
+{q:"Un rectangle mesure 6 cm sur 4 cm. Quel est son périmètre ?",a:["10 cm","20 cm","24 cm","12 cm"],c:1,e:"Périmètre = 2 × (6 + 4) = 20 cm."},
+{q:"Combien vaut 15 % de 200 ?",a:["15","20","30","45"],c:2,e:"10 % de 200 vaut 20 et 5 % vaut 10 : total 30."},
+{q:"Quelle est la valeur de 3² ?",a:["6","9","12","5"],c:1,e:"3² signifie 3 × 3 = 9."}
+],
+es:[
+{q:"Comment dit-on « bonjour » en espagnol ?",a:["Gracias","Hola","Adiós","Por favor"],c:1,e:"Hola signifie salut ou bonjour."},
+{q:"Que signifie « gracias » ?",a:["Merci","Bonjour","Au revoir","S'il te plaît"],c:0,e:"Gracias signifie merci."},
+{q:"Comment dit-on « livre » ?",a:["Mesa","Casa","Libro","Perro"],c:2,e:"Libro signifie livre."},
+{q:"Que signifie « azul » ?",a:["Rouge","Bleu","Vert","Jaune"],c:1,e:"Azul signifie bleu."},
+{q:"Comment dit-on « s'il te plaît » ?",a:["Hasta luego","Por favor","De nada","Buenas noches"],c:1,e:"Por favor signifie s'il te plaît."}
+],
+music:[
+{q:"Combien de lignes possède une portée musicale ?",a:["3","4","5","6"],c:2,e:"Une portée musicale comporte cinq lignes."},
+{q:"Quel instrument possède généralement 88 touches ?",a:["Flûte","Piano","Violon","Trompette"],c:1,e:"Un piano standard possède généralement 88 touches."},
+{q:"Que désigne le tempo ?",a:["La vitesse de la musique","Le titre","Le volume du public","Le compositeur"],c:0,e:"Le tempo indique la vitesse d'exécution."},
+{q:"Quel instrument appartient à la famille des bois ?",a:["Trombone","Clarinette","Harpe","Violoncelle"],c:1,e:"La clarinette est un instrument à vent de la famille des bois."},
+{q:"Quel instrument possède des cordes que l'on frotte avec un archet ?",a:["Violon","Flûte","Trompette","Tambour"],c:0,e:"Le violon se joue généralement avec un archet."}
+]
 };
 
-const defis = {
-  theatre:["Mime une émotion sans parler.","Invente une rencontre entre une reine et un dragon timide.","Joue un personnage qui découvre un passage secret."],
-  dessin:["Dessine un animal qui vit dans les nuages.","Imagine une bibliothèque sous la mer.","Crée une carte d'un royaume secret."],
-  lecture:["Imagine une autre fin pour ton livre.","Invente un nouveau titre pour ton histoire.","Imagine une journée dans la vie d'un personnage."]
+const challenges={
+theatre:["Mime une émotion sans parler.","Invente une rencontre entre une reine et un dragon timide.","Joue un personnage qui découvre un passage secret."],
+drawing:["Dessine un animal qui vit dans les nuages.","Imagine une bibliothèque sous la mer.","Crée la carte d'un royaume secret."],
+reading:["Imagine une autre fin à ton livre préféré.","Invente un nouveau titre pour ton histoire.","Imagine une journée dans la vie d'un personnage."]
 };
-
-const conseils = [
-  "Explique une leçon avec tes propres mots pour mieux la retenir.",
-  "Une petite pause fait aussi partie d'un bon apprentissage.",
-  "Les erreurs nous aident à progresser.",
-  "Essaie de te poser des questions sans regarder ton cours.",
-  "Garde du temps pour les choses qui te rendent heureuse."
+const adviceList=[
+"Explique une leçon avec tes propres mots pour mieux la retenir.",
+"Une pause fait aussi partie d'un bon apprentissage.",
+"Les erreurs nous aident à progresser.",
+"Essaie de te poser des questions sans regarder ton cours.",
+"Garde du temps pour les choses qui te rendent heureuse."
 ];
 
-let donnees = {prenom:"",points:0,bonnes:0,badges:[]};
+let data={name:"",points:0,correct:0,badges:[]};
+try { data={...data,...JSON.parse(localStorage.getItem("dreamAcademy")||"{}")}; } catch(e) {}
 
-try {
-  donnees = {...donnees,...JSON.parse(localStorage.getItem("hautsReves")||"{}")};
-} catch(e) {}
+function persist(){
+ try { localStorage.setItem("dreamAcademy",JSON.stringify(data)); } catch(e){}
+}
+function setName(){
+ const v=document.getElementById("nameInput").value.trim();
+ if(v) data.name=v.slice(0,25);
+ document.getElementById("welcomeTitle").textContent=data.name
+ ? "Bienvenue, "+data.name+" ! ✨":"Choisis ton nom magique pour commencer.";
+ document.getElementById("miniName").textContent=data.name||"Jeune rêveuse";
+ persist();
+}
+function refresh(){
+ document.getElementById("points").textContent=data.points;
+ document.getElementById("level").textContent=Math.floor(data.points/100)+1;
+ document.getElementById("level2").textContent=Math.floor(data.points/100)+1;
+ document.getElementById("correctCount").textContent=data.correct;
+ document.getElementById("badgeCount").textContent=data.badges.length;
+ document.getElementById("progress").value=data.points%100;
+ const l=Math.floor(data.points/100)+1;
+ document.getElementById("rank").textContent="Rang : "+(l<3?"Apprentie des étoiles ✨":l<5?"Gardienne des grimoires 📚":l<8?"Enchanteresse du savoir 🪄":"Maîtresse des Hauts Rêves 👑");
+}
+if(data.name){document.getElementById("nameInput").value=data.name;setName();}
 
-function sauver() {
-  try { localStorage.setItem("hautsReves",JSON.stringify(donnees)); }
-  catch(e) {}
+let quizType="",qi=0,quizScore=0,answered=false;
+function hidePanels(){
+ ["quizPanel","creative","timer"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+}
+function showPanel(id){
+ hidePanels(); document.getElementById(id).classList.remove("hidden");
+ document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
+}
+function startQuiz(type){
+ quizType=type;qi=0;quizScore=0;showPanel("quizPanel");
+ document.getElementById("quizTitle").textContent={fr:"📜 Le Grimoire du français",math:"🔮 La Tour des nombres",es:"🇪🇸 L'Atelier espagnol",music:"🎵 La Salle des mélodies"}[type];
+ renderQuestion();
+}
+function renderQuestion(){
+ answered=false;
+ const q=quizzes[quizType][qi];
+ document.getElementById("quizCount").textContent="Défi "+(qi+1)+" sur "+quizzes[quizType].length;
+ document.getElementById("question").textContent=q.q;
+ document.getElementById("feedback").textContent="";
+ document.getElementById("nextButton").classList.add("hidden");
+ const zone=document.getElementById("answers");zone.replaceChildren();
+ q.a.forEach((answer,i)=>{
+  const b=document.createElement("button");
+  b.textContent=String.fromCharCode(65+i)+". "+answer;
+  b.onclick=()=>answerQuestion(i);
+  zone.appendChild(b);
+ });
+}
+function earnBadge(name){
+ if(!data.badges.includes(name))data.badges.push(name);
+}
+function answerQuestion(i){
+ if(answered)return;answered=true;
+ const q=quizzes[quizType][qi];
+ document.querySelectorAll("#answers button").forEach(b=>b.disabled=true);
+ if(i===q.c){
+  data.points+=10;data.correct++;quizScore++;
+  document.getElementById("feedback").textContent="✨ Excellente réponse ! +10 points. "+q.e;
+  if(quizScore>=3)earnBadge("Trois étoiles");
+ }else{
+  document.getElementById("feedback").textContent="💫 La bonne réponse était « "+q.a[q.c]+" ». "+q.e;
+ }
+ document.getElementById("nextButton").textContent=qi===quizzes[quizType].length-1?"Terminer la mission 🏆":"Question suivante ➜";
+ document.getElementById("nextButton").classList.remove("hidden");
+ persist();refresh();
+}
+function nextQuestion(){
+ if(!answered)return;
+ qi++;
+ if(qi>=quizzes[quizType].length){
+  earnBadge("Exploratrice du savoir");
+  persist();refresh();
+  document.getElementById("quizCount").textContent="Mission terminée !";
+  document.getElementById("question").textContent="Tu as obtenu "+quizScore+" bonne(s) réponse(s) sur "+quizzes[quizType].length+".";
+  document.getElementById("answers").replaceChildren();
+  document.getElementById("feedback").textContent=quizScore===quizzes[quizType].length?"✨ Un sans-faute ! Tu es brillante !":"🌟 Bravo pour tes efforts. Refaire le défi t'aidera à progresser.";
+  document.getElementById("nextButton").classList.add("hidden");
+ }else renderQuestion();
 }
 
-function stats() {
-  document.getElementById("points").textContent=donnees.points;
-  document.getElementById("bonnes").textContent=donnees.bonnes;
-  document.getElementById("badges").textContent=donnees.badges.length;
-  let niveau=Math.floor(donnees.points/50)+1;
-  document.getElementById("rang").textContent="Niveau "+niveau+" — "+(
-    niveau<3?"Apprentie des étoiles ✨":
-    niveau<5?"Gardienne des grimoires 📚":
-    niveau<8?"Enchanteresse du savoir 🪄":"Maîtresse des Hauts Rêves 👑");
-  document.getElementById("progression").value=donnees.points%50;
+function newChallenge(type){
+ const list=challenges[type];
+ const ids={theatre:"theatreText",drawing:"drawingText",reading:"readingText"};
+ document.getElementById(ids[type]).textContent=list[Math.floor(Math.random()*list.length)];
+}
+document.getElementById("journal").value=localStorage.getItem("dreamJournal")||"";
+function saveJournal(){
+ try{
+  localStorage.setItem("dreamJournal",document.getElementById("journal").value);
+  document.getElementById("journalMessage").textContent="✨ Ton journal a été enregistré sur cet appareil.";
+ }catch(e){document.getElementById("journalMessage").textContent="Enregistrement indisponible dans ce navigateur.";}
+}
+function newAdvice(){
+ document.getElementById("advice").textContent=adviceList[Math.floor(Math.random()*adviceList.length)];
 }
 
-function saluer() {
-  let p=document.getElementById("prenom").value.trim();
-  if(p) donnees.prenom=p.slice(0,30);
-  document.getElementById("accueil").textContent=donnees.prenom
-    ?"Bienvenue, "+donnees.prenom+" ! Ton aventure commence. ✨"
-    :"Choisis un prénom ou un pseudonyme magique.";
-  sauver();
+let remaining=900,timerId=null;
+function drawClock(){
+ document.getElementById("clock").textContent=String(Math.floor(remaining/60)).padStart(2,"0")+":"+String(remaining%60).padStart(2,"0");
 }
-
-document.getElementById("prenom").value=donnees.prenom;
-if(donnees.prenom) saluer();
-
-let type="general", numero=0, score=0, repondu=false;
-
-function afficher(id) {
-  ["quiz","timer","passions"].forEach(x=>document.getElementById(x).classList.add("cache"));
-  document.getElementById(id).classList.remove("cache");
-  document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
+function resetTimer(){
+ pauseTimer();remaining=Number(document.getElementById("duration").value);drawClock();
+ document.getElementById("timerMessage").textContent="Le sablier est prêt !";
 }
-
-function ouvrirQuiz(t) {
-  type=t; numero=0; score=0;
-  afficher("quiz");
-  document.getElementById("titreQuiz").textContent={
-    general:"📚 Le grimoire des savoirs",
-    espagnol:"🇪🇸 L'atelier espagnol",
-    musique:"🎵 La salle des mélodies"
-  }[t];
-  afficherQuestion();
-}
-
-function afficherQuestion() {
-  repondu=false;
-  const q=questions[type][numero];
-  document.getElementById("compteur").textContent="Question "+(numero+1)+" sur "+questions[type].length;
-  document.getElementById("question").textContent=q.q;
-  document.getElementById("feedback").textContent="";
-  document.getElementById("suivant").classList.add("cache");
-  const zone=document.getElementById("reponses");
-  zone.innerHTML="";
-  q.r.forEach((r,i)=>{
-    const b=document.createElement("button");
-    b.textContent=String.fromCharCode(65+i)+". "+r;
-    b.onclick=()=>verifier(i);
-    zone.appendChild(b);
-  });
-}
-
-function badge(nom) {
-  if(!donnees.badges.includes(nom)) donnees.badges.push(nom);
-}
-
-function verifier(choix) {
-  if(repondu) return;
-  repondu=true;
-  const q=questions[type][numero];
-  document.querySelectorAll("#reponses button").forEach(b=>b.disabled=true);
-  if(choix===q.b) {
-    donnees.points+=10;
-    donnees.bonnes++;
-    score++;
-    document.getElementById("feedback").textContent="✨ Bravo ! +10 points. "+q.e;
-    document.getElementById("feedback").style.color="#c9efcb";
-    if(score>=3) badge("Trois étoiles");
-  } else {
-    document.getElementById("feedback").textContent="La bonne réponse était « "+q.r[q.b]+" ». "+q.e;
-    document.getElementById("feedback").style.color="#ffe0b3";
+function runTimer(){
+ if(timerId!==null||remaining<=0)return;
+ document.getElementById("timerMessage").textContent="Mission en cours. Concentre-toi sur une chose à la fois.";
+ timerId=setInterval(()=>{
+  remaining--;drawClock();
+  if(remaining<=0){
+   pauseTimer();earnBadge("Gardienne du temps");persist();refresh();
+   document.getElementById("timerMessage").textContent="🔔 Mission terminée ! Bravo. Place à une pause.";
   }
-  sauver(); stats();
-  document.getElementById("suivant").classList.remove("cache");
-  document.getElementById("suivant").textContent=
-    numero===questions[type].length-1?"Terminer le quiz 🏆":"Question suivante ➜";
+ },1000);
 }
-
-function suivante() {
-  if(!repondu) return;
-  numero++;
-  if(numero>=questions[type].length) {
-    badge("Exploratrice du savoir");
-    sauver(); stats();
-    document.getElementById("compteur").textContent="Mission terminée !";
-    document.getElementById("question").textContent="✨ Tu as obtenu "+score+" bonne(s) réponse(s) sur "+questions[type].length+".";
-    document.getElementById("reponses").innerHTML="";
-    document.getElementById("feedback").textContent=
-      score===questions[type].length?"Un sans-faute ! Quelle magicienne du savoir !":"Bravo pour tes efforts ! Tu peux refaire le quiz pour progresser.";
-    document.getElementById("suivant").classList.add("cache");
-  } else afficherQuestion();
+function pauseTimer(){
+ if(timerId!==null)clearInterval(timerId);
+ timerId=null;
 }
-
-function fermerQuiz() {
-  document.getElementById("quiz").classList.add("cache");
-}
-
-Object.keys(defis).forEach(t=>{
-  const el=document.getElementById("defi"+t.charAt(0).toUpperCase()+t.slice(1));
-  if(el) el.textContent=defis[t][0];
-});
-
-function defi(t) {
-  const liste=defis[t];
-  const el=document.getElementById("defi"+t.charAt(0).toUpperCase()+t.slice(1));
-  el.textContent=liste[Math.floor(Math.random()*liste.length)];
-}
-
-function conseil() {
-  document.getElementById("conseil").textContent=conseils[Math.floor(Math.random()*conseils.length)];
-}
-
-document.getElementById("journal").value=localStorage.getItem("journalHautsReves")||"";
-
-function sauverJournal() {
-  try {
-    localStorage.setItem("journalHautsReves",document.getElementById("journal").value);
-    document.getElementById("journalInfo").textContent="✨ Ton journal a été enregistré sur cet appareil.";
-  } catch(e) {
-    document.getElementById("journalInfo").textContent="Le navigateur n'a pas permis l'enregistrement.";
-  }
-}
-
-let restant=900, intervalle=null;
-
-function dessinerTimer() {
-  document.getElementById("horloge").textContent=
-    String(Math.floor(restant/60)).padStart(2,"0")+":"+
-    String(restant%60).padStart(2,"0");
-}
-
-function reglerTimer() {
-  pause();
-  restant=Number(document.getElementById("duree").value);
-  dessinerTimer();
-  document.getElementById("timerMessage").textContent="Le sablier est prêt !";
-}
-
-function demarrer() {
-  if(intervalle!==null || restant<=0) return;
-  document.getElementById("timerMessage").textContent="Mission en cours : concentre-toi sur une chose à la fois.";
-  intervalle=setInterval(()=>{
-    restant--;
-    dessinerTimer();
-    if(restant<=0) {
-      pause();
-      document.getElementById("timerMessage").textContent="🔔 Mission terminée ! Bravo. Place à une petite pause.";
-      badge("Gardienne du temps");
-      sauver(); stats();
-    }
-  },1000);
-}
-
-function pause() {
-  if(intervalle!==null) clearInterval(intervalle);
-  intervalle=null;
-}
-
-stats();
-dessinerTimer();
+refresh();drawClock();
 </script>
 
 </body>
